@@ -14,28 +14,38 @@ function App() {
 
     const [data, setData] = useState();
     const [isLoading, setIsLoading] = useState(true);
+    
 
-    useEffect( () => {
+     useEffect(() => {
       const fetchData = async () => {
         try {
-
-          const res = await axios.get(
-            "http://localhost:3200/"
-          );
+          const res = await axios.get("http://localhost:3200/");
           console.log(res.data);
           setData(res.data);
           setIsLoading(false);
-          
         } catch (err) {
           console.log(err.message);
         }
-      }
+      };
       fetchData();
-    }, [])
+    }, []);
 
-    const handleClick = () => {
+    const [list, setList] = useState([
+      {
+        counter: 1,
+        product: "product",
+        price: 25 /* Number(price) */,
+       
+      },
+    ]);
+
+    const handleClickAddScart = (index, title, price) => {
+      const newList = [...list];
+      newList.push({ counter: 1, product: title, price: price });
+      setList(newList);
 
     }
+
 
 
 
@@ -67,9 +77,9 @@ function App() {
                 <span id="name">{name}</span>
                 <div className="categories_content" key={index}>
                   {meals.map(
-                    ({ title, description, price, picture, popular }, id) => {
+                    ({ title, description, price, picture, popular }, index) => {
                       return (
-                        <div className="meal" onClick={handleClick}>
+                        <div key={index} className="meal" onClick={() => {handleClickAddScart(index, title, price)}}>
                           <div className="meal_content">
                             <span id="title">{title}</span>
                             <p id="descript">{description}</p>
@@ -103,7 +113,7 @@ function App() {
             );
           })}
         </div>
-       <Scart counter={0} price={data.categories[0].meals[0].price}/>
+       <Scart counter={1} price={list.price} product={list.product} list={list} setList={setList} delivery={12}/>
       </div>
     </div>
   );

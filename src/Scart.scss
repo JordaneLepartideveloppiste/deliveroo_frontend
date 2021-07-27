@@ -1,11 +1,13 @@
 .scart {
+    position: sticky;
+   
         box-sizing: border-box;
         margin: 1rem 0 0 1rem;
         box-shadow: 0.1rem 1rem 2rem rgb(207, 207, 207);
         border-radius: 2px;
         background-color: #fff;
         width: 26vw;
-        max-height: 60vh;
+        height: 50%;
         display: flex;
         flex-flow: column nowrap;
         padding: 0.6rem;
