@@ -31,12 +31,12 @@ function App() {
     }, []);
 
     const [list, setList] = useState([
-      {
+      /* {
         counter: 1,
         product: "product",
-        price: 25 /* Number(price) */,
+        price: 25,
        
-      },
+      }, */
     ]);
 
     const handleClickAddScart = (index, title, price) => {
@@ -113,7 +113,7 @@ function App() {
             );
           })}
         </div>
-       <Scart counter={1} price={list.price} product={list.product} list={list} setList={setList} delivery={12}/>
+       <Scart counter={1} list={list} setList={setList} delivery={12}/>
       </div>
     </div>
   );
