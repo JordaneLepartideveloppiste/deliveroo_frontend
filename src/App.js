@@ -39,10 +39,19 @@ function App() {
       }, */
     ]);
 
-    const handleClickAddScart = (index, title, price) => {
+    const handleClickAddScart = (id, title, price) => {
+      
       const newList = [...list];
-      newList.push({ counter: 1, product: title, price: price });
-      setList(newList);
+      console.log(id);
+     
+      if (newList.indexOf(id) !== -1) {
+        console.log("déjà");
+        /* newList[index].counter++ */
+      } else {
+        console.log(newList);
+        newList.push({ counter: 1, product: title, price: price, id:id })
+      }
+      setList(newList); 
 
     }
 
@@ -77,9 +86,9 @@ function App() {
                 <span id="name">{name}</span>
                 <div className="categories_content" key={index}>
                   {meals.map(
-                    ({ title, description, price, picture, popular }, index) => {
+                    ({ title, description, price, picture, popular, id }, index) => {
                       return (
-                        <div key={index} className="meal" onClick={() => {handleClickAddScart(index, title, price)}}>
+                        <div key={id} className="meal" onClick={() => {handleClickAddScart(id, title, price, index)}}>
                           <div className="meal_content">
                             <span id="title">{title}</span>
                             <p id="descript">{description}</p>

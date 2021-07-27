@@ -23,12 +23,14 @@ const Scart = ({counter, list, setList, delivery}) => {
     }
 
     const sumSubTotal = () => {
+        let subTotal = 0;
         for (let i=0; i < list.length; i++) {
              console.log(list);
-            let subTotal = 0;
+            
             subTotal += list[i].price*list[i].counter;
-            return subTotal;
+            
         }
+        return subTotal;
     }
 
   
@@ -37,15 +39,15 @@ const Scart = ({counter, list, setList, delivery}) => {
       <div className="scart">
         <button id="valid">Valider mon panier</button>
         <div className="scart_content">
-          {list.map(({ counter, product, price }, index) => {
+          {list.map(({ counter, product, price }, id) => {
             const totalUnit = price * counter;
 
             return (
-              <div className="product_list" key={index}>
+              <div className="product_list" key={id}>
                 <div className="counter">
                   <button
                     onClick={() => {
-                      handleClickLess(index);
+                      handleClickLess(id);
                     }}
                     style={{ display: counter === 0 && "none" }}
                   >
@@ -54,7 +56,7 @@ const Scart = ({counter, list, setList, delivery}) => {
                   <span id="quantity">{counter}</span>
                   <button
                     onClick={() => {
-                      handleClickAdd(index);
+                      handleClickAdd(id);
                     }}
                   >
                     <FontAwesomeIcon icon="plus-circle" />
