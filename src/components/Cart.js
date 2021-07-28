@@ -33,6 +33,12 @@ const Scart = ({counter, list, setList, delivery}) => {
         return subTotal;
     }
 
+    const sumTotal = (num) => {
+        let total = 0;
+      
+        return total = num + 12;
+    }
+
   
 
     return (
@@ -82,7 +88,7 @@ const Scart = ({counter, list, setList, delivery}) => {
           <div className="total">
             <span id="tot">Total</span>
             <span className="price" id="amount">
-              prix €
+              {sumTotal(sumSubTotal())} €
             </span>
           </div>
         </div>
